@@ -10,22 +10,23 @@
     min-width: 10vw;
     height: 5vh;
     font-size: 1vw;
-    margin: 0 1vw 0 1vw;
+    margin: 0.5vh 1vw 0 1vw;
 }
 .answerClicked{
-    background-color: #D6DBF5;
+/*    background-color: #D6DBF5;*/
+    background-color: #bac0df;
 }
 .answerTrue{
-    background-color: green;
+    background-color: #6ebb7e;
 }
 .answerBlank{
-    background-color: grey;
+    opacity: 0.5;
 }
 .answerRight{
-    background-color: rgb(100, 139, 100);
+    background-color: #94D7A2;
 }
 .answerFalse{
-    background-color: red;
+    background-color: #F8BCBC;
 }
 body{
     overflow-x: hidden;
@@ -40,10 +41,11 @@ main{
     text-align: center;
 }
 .title{
-    font-weight: 700;
+    font-weight: 1000;
     font-size: 4vw;
     margin: 0;
-    letter-spacing: 0.1vw;
+    letter-spacing: 0.5vw;
+    color: #293264;
 }
 .blob1{
     position: absolute;
@@ -99,5 +101,62 @@ hr{
     border-radius: 1vw;
 }
 @media (max-width: 500px) {
-    
+    body{
+        overflow-x: hidden;
+    }
+    .answer{
+        border: 2px solid #4D5B9E;
+        font-weight: 500;
+        border-radius: 2vw;
+        min-width: 90vw;
+        height: fit-content;
+        min-height: 4vh;
+        font-size: 4vw;
+        margin: 0.5vh 1vw 0 1vw;
+    }
+    main{
+        overflow-x: hidden;
+        width:100vw;
+        padding-left: 0vw;
+        padding-top: 0.5vh;
+        text-align: center;
+    }
+    .answers{
+        display: grid;
+        padding: 0;
+        margin: 0;
+    }
+    .title{
+        font-size: 12vw;
+    }
+    /*  ----------  */
+    .field{
+        padding: 0 0 1vw 0;
+        margin: 0;
+    }
+    .fieldTitle{
+        font-size: 4.5vw;
+        color: #293264;
+    }
+    hr{
+        margin-top: 2vh;
+        border: 1.5px solid #DBDEF0;
+        background-color: #DBDEF0;
+        width: 70vw;
+    }
+    .submit{
+        width: fit-content;
+        height: 6vh;
+        margin-top: 1.5vh;
+        font-size: 8vw;
+        font-weight: 600;
+        border-radius: 3vw;
+        padding: 0 4vw 0 4vw;
+    }
+    .blob1{
+        display: none;
+    }
+    .blob2{
+        display: none;
+    }
 }

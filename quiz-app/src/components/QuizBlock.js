@@ -57,7 +57,7 @@ export default function QuizBlock(){
             return(
                 <div key={nanoid()} className="field">
                     <h1 key={nanoid()} className="fieldTitle">{field.question}</h1>
-                    <div key={nanoid()}>
+                    <div key={nanoid()} className="answers">
                         {tempAnswers}
                     </div>
                     <hr/>
@@ -111,7 +111,7 @@ export default function QuizBlock(){
             return(
                 <div key={nanoid()} className="field">
                     <h1 key={nanoid()} className="fieldTitle">{field.question}</h1>
-                    <div key={nanoid()}>
+                    <div key={nanoid()} className="answers">
                         {tempAnswers}
                     </div>
                     <hr/>
