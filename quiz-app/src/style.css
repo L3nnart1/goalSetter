@@ -1,0 +1,103 @@
+.answer{
+    background-color: none;
+    background: none;
+    border: 3px solid #4D5B9E;
+    color: #293264;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    border-radius: 0.6vw;
+    width: fit-content;
+    min-width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+    margin: 0 1vw 0 1vw;
+}
+.answerClicked{
+    background-color: #D6DBF5;
+}
+.answerTrue{
+    background-color: green;
+}
+.answerBlank{
+    background-color: grey;
+}
+.answerRight{
+    background-color: rgb(100, 139, 100);
+}
+.answerFalse{
+    background-color: red;
+}
+body{
+    overflow-x: hidden;
+    margin: 0;
+    background-color: #F5F7FB;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+main{
+    width:60vw;
+    padding-left: 20vw;
+    padding-top: 0.5vh;
+    text-align: center;
+}
+.title{
+    font-weight: 700;
+    font-size: 4vw;
+    margin: 0;
+    letter-spacing: 0.1vw;
+}
+.blob1{
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    left: 62.24%;
+    right: -62.24%;
+    top: -56%;
+    bottom: -161.16%;
+    z-index: -1;
+
+    border-radius: 50% 50% 74% 26% / 30% 39% 61% 70% ;
+    background: #FFFAD1;
+    transform: rotate(-128.49deg);
+}
+.blob2{
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    left: -20%;
+    right: 0%;
+    top: 20%;
+    bottom: 0%;
+    border-radius: 50% 50% 74% 26% / 30% 39% 61% 70% ;
+
+    background: #DEEBF8;
+    z-index: -1;
+    transform: rotate(-128.49deg);
+}
+.field{
+    padding: 0 0 1vw 0;
+    margin: 0;
+}
+.fieldTitle{
+    color: #293264;
+    letter-spacing: 0.05vw;
+}
+hr{
+    margin-top: 4vh;
+    border: 2px solid #DBDEF0;
+    background-color: #DBDEF0;
+    width: 50vw;
+}
+.submit{
+    width: 16vw;
+    height: 8vh;
+    margin-top: 3vh;
+    color: white;
+    font-size: 2vw;
+    font-weight: 700;
+    background-color: #4D5B9E;
+    border: none;
+    border-radius: 1vw;
+}
+@media (max-width: 500px) {
+    
+}
