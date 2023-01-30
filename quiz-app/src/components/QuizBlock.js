@@ -1,8 +1,10 @@
 import React from "react"
 import "../style.css"
 import { nanoid } from 'nanoid'
+import zahnrad from "./zahnrad.png"
+import Confirm from "./Confirm"
 
-export default function QuizBlock(){
+export default function QuizBlock(props){
     let [data, setData] = React.useState([]);
 
     let [fields, setFields] = React.useState(initFields())
@@ -11,15 +13,27 @@ export default function QuizBlock(){
 
     let [restart, setRestart] = React.useState(0);
 
+    const [confirm, setConfirm] = React.useState(false);
+
     React.useEffect(function(){
-        fetch("https://opentdb.com/api.php?amount=5&type=multiple&encode=base64")
-            .then(res => res.json())
+        setSubmited(false)
+        try{
+            fetch(`https://opentdb.com/api.php?amount=5${props.category === 99 ? "" : "&category="+props.category}&type=${props.type}&encode=base64`)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                throw new Error('Something went wrong');
+            })
             .then(recievedData => setData(recievedData.results))
+        }catch(err){
+            console.log(err.message)
+            document.write("Verbindung fehlgeschlagen")
+        }
     },[restart]);
 
     React.useEffect(function() {
         setFields(initFields());
-        console.log("change")
     },[data])
 
     function initFields(){
@@ -100,7 +114,9 @@ export default function QuizBlock(){
         hasAnswer = !decis.includes(false);
         return hasAnswer;
     }
+    let right = 0;
     function setFinal(){
+        right = 0;
         let fieldElements = fields.map(field => {
             let tempAnswers = field.wrong.map(quest => <button className={quest.isClicked ? "answer answerFalse" : "answer answerBlank"}>{quest.text}</button>)
             tempAnswers.splice(field.true.pos, 0,
@@ -108,6 +124,7 @@ export default function QuizBlock(){
                                    className={field.true.isClicked ? "answer answerTrue" : "answer answerRight"} >
                                    {field.true.text}</button>
                                 )
+            right = field.true.isClicked ? right+=1 : right;
             return(
                 <div key={nanoid()} className="field">
                     <h1 key={nanoid()} className="fieldTitle">{field.question}</h1>
@@ -122,19 +139,22 @@ export default function QuizBlock(){
     }
     function handleSubmit(){
         let render = checkAnswers()
-        if(render){
+        if(render){ 
             setSubmited(true)
         }
     }
     function initRestart(){
-        setSubmited(false)
         setRestart(old => old += 1)
     }
 
     return(
         <div key={nanoid()}>
+            <h1 className="title" id="title">Quiz</h1>
+            <img src={zahnrad} className="settings" onClick={() => setConfirm(prevC => !prevC)}></img>
+            {confirm && <Confirm handleContinue={props.handleClick} handleReturn={() => setConfirm(false)}/>}
             {!submited ? setFieldElements() : setFinal()}
-            <button className="submit" onClick={!submited ? handleSubmit : initRestart} >{submited ? "Restart" : "Submit"}</button>
+            {submited && <h2 className="result">{right}/5 Richtig</h2>}
+            <button className="submit" onClick={!submited ? handleSubmit : initRestart}>{submited ? "Restart" : "Submit"}</button>
         </div>
     )
 }
