@@ -10,9 +10,8 @@ function App() {
     <>
       <Router>
         <div className='container'>
+        <Header />
           <Routes>
-            // header funktioniert noch nicht 
-            <Header></Header>
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
