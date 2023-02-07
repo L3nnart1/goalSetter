@@ -2,6 +2,9 @@ const jwt = require("jsonwebtoken")
 const asyncHandler = require("express-async-handler")
 const User = require("../models/userModel")
 
+//user wird überprüft und die abfragen im Controller haben dann
+//bereits die überprüfte User request
+
 const protect = asyncHandler( async(req, res, next) => {
     let token;
     

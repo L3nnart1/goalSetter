@@ -15,7 +15,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error("Please add all fields")
     }
     // check if user exists
-    const userExists = await User.findOne({email})
+    const userExists = await User.findOne({ email })
 
     if(userExists){
         res.status(400)
@@ -71,13 +71,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   Get /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
-    const {_id, name, email} = await User.findById(req.user.id)
-
-    res.status(200).json({
-        id: _id,
-        name,
-        email,
-    })
+    res.status(200).json(req.user)
 })
 
 // Generate JWT
